@@ -27,4 +27,7 @@ markdown: kramdown
 theme: jekyll-theme-leap-day
 plugins:
   - jekyll-feed
-github: [metadata]
+github: 
+  repository_url: "https://github.com/periscope-tech/QViz.SDK"
+  zip_url: "https://github.com/periscope-tech/QViz.SDK/releases"
+  tar_url: "https://github.com/periscope-tech/QViz.SDK/releases"
