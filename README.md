@@ -10,7 +10,7 @@ This repository contains the following structure:
 ## Information
 
 ### Technical Architect
-Srinivasan Annamalai (<mailto:srinivasan.annamalai@qviz.io>)
+Srinivasan Annamalai <[srinivasan.annamalai@qviz.io](mailto:srinivasan.annamalai@qviz.io)>
 
 ### Copyright
 Copyright © 2018-2020, **Periscope Technologies, Inc**. All Rights Reserved.
