@@ -1,0 +1,4 @@
+baseURL = "https://sdk.qviz.io/"
+languageCode = "en-us"
+title = "QViz SDK"
+theme = "docsy"
