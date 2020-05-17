@@ -1,5 +1,5 @@
 # Site Configuration
-baseURL = "https://sdk.qviz.io/"
+baseURL = "https://sdk.qviz.io"
 languageCode = "en-us"
 languageName = "English"
 title = "QViz.SDK"
