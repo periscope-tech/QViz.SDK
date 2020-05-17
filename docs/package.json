@@ -1,0 +1,29 @@
+{
+  "name": "qviz-sdk-docs",
+  "version": "1.0.0",
+  "description": "Technical Documentation of QViz Software Development Kit for the Quality Visualizations Product by Periscope Technologies, Inc.",
+  "main": "none.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:periscope-tech/QViz.SDK.git"
+  },
+  "keywords": [
+    "qviz",
+    "sdk",
+    "quality",
+    "visualizations",
+    "insights",
+    "framework",
+    "periscope",
+    "technologies"
+  ],
+  "author": "Srinivasan Annamalai <srinivasan.annamalai@qviz.io>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "autoprefixer": "^9.7.6",
+    "postcss-cli": "^7.1.1"
+  }
+}
