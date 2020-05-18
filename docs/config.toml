@@ -6,6 +6,7 @@ title = "QViz.SDK"
 description = "Documentation Site of the QViz Software Development Kit for Developers."
 theme = "docsy"
 enableGitInfo = true
+enableRobotsTXT = true
 
 # Language settings
 contentDir = "content/en"
