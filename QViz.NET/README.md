@@ -29,7 +29,7 @@ The following are the steps for deploying the QViz.NET SDK Package in the NuGet 
     4. `<PropertyGroup><AssemblyVersion>`
     5. `<PropertyGroup><FileVersion>`
 6. Build the Release version of QViz.NET SDK: `dotnet build QViz.NET.sln -c Release`
-7. Deploy the Package to the NuGet Repository: `nuget push -Source "periscope-tech" -ApiKey AzureDevOps bin/Release/Periscope.QViz.<version>.nupkg`
+7. Deploy the Package to the NuGet Repository: `nuget push -Source "periscope-tech" -ApiKey AzureDevOps Periscope.QViz\bin\Release\Periscope.QViz.<version>.nupkg`
 
 ## Generating the Doxygen Documentation
 The following are the steps for generating the [Doxygen](http://www.doxygen.org/index.html) documentation site for QViz.NET SDK:
