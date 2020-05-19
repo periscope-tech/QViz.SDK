@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Package Description -->
+	<groupId>com.periscope</groupId>
+	<artifactId>QViz</artifactId>
+	<version>1.0.0</version>
+
+	<!-- Package Configurations -->
+	<name>QViz</name>
+	<description>
+		Software Development Kit (SDK) for Quality Visualizations (QViz) Product by Periscope Technologies, Inc.
+		written in Java 8 to support any JVM based projects.
+	</description>
+	<url>https://sdk.qviz.io</url>
+	<organization>
+		<name>Periscope Technologies, Inc.</name>
+		<url>https://periscope-tech.com</url>
+	</organization>
+	<developers>
+		<developer>
+			<name>Srinivasan Annamalai</name>
+			<email>srinivasan.annamalai@qviz.io</email>
+			<url>https://srinivasan.pro</url>
+		</developer>
+	</developers>
+	<licenses>
+		<license>
+			<name>Copyright © 2018-2020, Periscope Technologies, Inc.</name>
+		</license>
+	</licenses>
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<junit.jupiter.version>5.6.2</junit.jupiter.version>
+		<rest.assured.version>4.3.0</rest.assured.version>
+	</properties>
+
+	<!-- Package Repositories -->
+	<repositories>
+		<repository>
+			<id>periscope-tech</id>
+			<name>QViz SDK Maven Packages</name>
+			<url>https://maven.pkg.github.com/periscope-tech/QViz.SDK</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<!-- Package Distribution Management -->
+	<distributionManagement>
+		<repository>
+			<id>periscope-tech</id>
+			<name>QViz SDK Maven Packages</name>
+			<url>https://maven.pkg.github.com/periscope-tech/QViz.SDK</url>
+		</repository>
+	</distributionManagement>
+
+	<!-- Package Plugins -->
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+				</plugin>
+				<plugin>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>3.9.0</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.0.0-M4</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>attach-javadocs</id>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<additionalJOptions>--allow-script-in-comments</additionalJOptions>
+					</configuration>
+				</plugin>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+				</plugin>
+				<plugin>
+					<artifactId>maven-resources-plugin</artifactId>
+				</plugin>
+				<plugin>
+					<artifactId>maven-jar-plugin</artifactId>
+				</plugin>
+				<plugin>
+					<artifactId>maven-install-plugin</artifactId>
+				</plugin>
+				<plugin>
+					<artifactId>maven-deploy-plugin</artifactId>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<!-- Package Reporting -->
+	<reporting>
+		<plugins>
+			<plugin>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>3.0.0-M4</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.2.0</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
+	<!-- Package Dependencies -->
+	<dependencies>
+		<!-- Main Dependencies -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.12</version>
+		</dependency>
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>azure-storage</artifactId>
+			<version>8.6.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+
+		<!-- Testing Dependencies -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>${rest.assured.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>${rest.assured.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+			<version>1.6.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+</project>
