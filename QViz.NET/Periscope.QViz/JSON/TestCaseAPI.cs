@@ -20,7 +20,7 @@ namespace Periscope.QViz.JSON
 		/// <summary>
 		/// List of Test API Objects associated with the Test Case
 		/// </summary>
-		public IList<TestAPI> testAPIs;
+		public IList<TestAPI> testAPI;
 
 		/// <summary>
 		/// Default Constructor
@@ -29,7 +29,7 @@ namespace Periscope.QViz.JSON
 		{
 			this.testCaseSteps = new List<TestCaseStep>();
 			this.testActions = new List<Action>();
-			this.testAPIs = new List<TestAPI>();
+			this.testAPI = new List<TestAPI>();
 		}
 	}
 }
