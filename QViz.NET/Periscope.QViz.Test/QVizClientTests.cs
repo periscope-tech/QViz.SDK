@@ -12,14 +12,9 @@ namespace Periscope.QViz.Test
     [TestFixture]
     public class QVizClientTests
     {
-        //private const string QVizURL = "https://api-demo.qviz.io";
-        //private const string QVizProject = "UbiSoft Web (en-US)";
-        //private const string QVizUser = "DemoAdmin";
-        //private const string QVizPassword = "password";
-
-        private const string QVizURL = "http://localhost:55627";
-        private const string QVizProject = "SCI API Services-AllScripts";
-        private const string QVizUser = "SCIAdmin";
+        private const string QVizURL = "https://api-demo.qviz.io";
+        private const string QVizProject = "UbiSoft Web (en-US)";
+        private const string QVizUser = "DemoAdmin";
         private const string QVizPassword = "password";
 
         private static QVizClient _qvizClient;
