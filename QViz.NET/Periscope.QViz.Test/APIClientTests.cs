@@ -9,15 +9,15 @@ namespace Periscope.QViz.Test
 	[TestFixture]
 	public class APIClientTests
 	{
-		private const string APIURL = "http://localhost:55627";
-		private const string CompanyId = "3dac2198-ea98-4f58-b9bc-b4584eccd463";
+		private const string APIURL = "https://api-demo.qviz.io";
+		private const string CompanyId = "05a0ab39-5198-4ae4-aa29-0ae346db03e2";
 		private static AccessUser _apiUser;
 		private static User _user;
 
 		[OneTimeSetUp]
 		public static void GetAccessToken()
 		{
-			var authentication = new Authentication("SCIAdmin", "password");
+			var authentication = new Authentication("admin", "password");
 			var apiClient = new APIClient(APIURL);
 			apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
 			apiClient.Body = authentication;
