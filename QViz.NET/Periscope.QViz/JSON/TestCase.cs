@@ -134,19 +134,29 @@ namespace Periscope.QViz.JSON
 		public ExecutionStatus executionStatus;
 
 		/// <summary>
-		/// List of Test Suites associated with the Test Case
+		/// GET List of Test Suites associated with the Test Case
 		/// </summary>
 		public IList<string> listOfSuiteNameForTestCase;
 
 		/// <summary>
-		/// List of Tags associated with the Test Case
+		/// GET List of Tags associated with the Test Case
 		/// </summary>
 		public IList<string> listOfTagNameForTestCase;
 
 		/// <summary>
-		/// List of third-party Tool identifiers associated with the Test Case
+		/// GET List of third-party Tool identifiers associated with the Test Case
 		/// </summary>
 		public IList<string> listToolIds;
+
+		/// <summary>
+		/// List of test suites to post
+		/// </summary>
+		public IList<TestSuite> testSuites;
+
+		/// <summary>
+		/// List of test tags used while POST
+		/// </summary>
+		public IList<Tag> testTags;
 
 		/// <summary>
 		/// Default Constructor
@@ -181,6 +191,8 @@ namespace Periscope.QViz.JSON
 			this.listOfSuiteNameForTestCase = new List<string>();
 			this.listOfTagNameForTestCase = new List<string>();
 			this.listToolIds = new List<string>();
+			this.testSuites = new List<TestSuite>();
+			this.testTags = new List<Tag>();
 		}
 	}
 }

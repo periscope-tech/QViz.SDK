@@ -382,6 +382,140 @@ namespace Periscope.QViz.Clients
 			if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
 		}
 
+
+		/// <summary>
+		/// Post the provided API Test to the QViz Instance
+		/// </summary>
+		/// <param name="apitest">API Test as JSON Object</param>
+		public void PostAPITest(TestCaseAPI apitest)
+		{
+			var apiClient = new APIClient(_baseURL);
+			apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
+			apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _user.access_token));
+			apiClient.Headers.Add(new KeyValue("userId", _user.userId));
+			apiClient.Body = apitest;
+			apiClient.Post<object>("/api/APITestcases");
+			_lastResponse = apiClient.Response.Content;
+			if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
+		}
+
+		/// <summary>
+		/// Post the provided GUI Test to the QViz Instance
+		/// </summary>
+		/// <param name="guiTest">GUI Test as JSON Object</param>
+		public void PostGUITest(TestCaseGUI guiTest)
+		{
+			var apiClient = new APIClient(_baseURL);
+			apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
+			apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _user.access_token));
+			apiClient.Headers.Add(new KeyValue("userId", _user.userId));
+			apiClient.Body = guiTest;
+			apiClient.Post<object>("/api/uiTestcases");
+			_lastResponse = apiClient.Response.Content;
+			if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
+		}
+
+		/// <summary>
+		/// Get all modules in a project
+		/// </summary>
+		/// <param name="projectId"></param>
+		/// <returns></returns>
+		public List<Module> GetModules(string projectId)
+		{
+			var apiClient = new APIClient(_baseURL);
+			apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
+			apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _user.access_token));
+			apiClient.Queries.Add(new KeyValue("projectId", projectId));
+			var modules = apiClient.Get<List<Module>>("/api/modules");
+			_lastResponse = apiClient.Response.Content;
+			if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
+
+			return modules;
+		}
+
+		/// <summary>
+		/// Post the provided Module to the QViz Instance
+		/// </summary>
+		/// <param name="module">Module as JSON Object</param>
+		public void PostModule(Module module)
+		{
+			var apiClient = new APIClient(_baseURL);
+			apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
+			apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _user.access_token));
+			apiClient.Headers.Add(new KeyValue("userId", _user.userId));
+			apiClient.Body = module;
+			apiClient.Post<object>("/api/modules");
+			_lastResponse = apiClient.Response.Content;
+			if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
+
+		}
+
+		/// <summary>
+		/// Get SubModule under a module in project
+		/// </summary>
+		/// <param name="moduleId"></param>
+		/// <returns></returns>
+		public List<SubModule> GetSubModules(string moduleId)
+		{
+			var apiClient = new APIClient(_baseURL);
+			apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
+			apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _user.access_token));
+			apiClient.Queries.Add(new KeyValue("moduleId", moduleId));
+			var subModules = apiClient.Get<List<SubModule>>("/api/sub-modules");
+			_lastResponse = apiClient.Response.Content;
+			if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
+			return subModules;
+		}
+
+		/// <summary>
+		/// Post the provided Module to the QViz Instance
+		/// </summary>
+		/// <param name="SubModule">SubModule as JSON Object</param>
+		public void PostSubModule(SubModule SubModule)
+		{
+			var apiClient = new APIClient(_baseURL);
+			apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
+			apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _user.access_token));
+			apiClient.Headers.Add(new KeyValue("userId", _user.userId));
+			apiClient.Body = SubModule;
+			apiClient.Post<object>("/api/sub-modules");
+			_lastResponse = apiClient.Response.Content;
+			if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
+		}
+
+		/// <summary>
+		/// Post the provided test Suite to the QViz Instance
+		/// </summary>
+		/// <param name="testSuite">Test Suite as JSON Object</param>
+		//public void PostTestSuite(SubModule testSuite)
+		//{
+		//	var apiClient = new APIClient(_baseURL);
+		//	apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
+		//	apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _user.access_token));
+		//	apiClient.Headers.Add(new KeyValue("userId", _user.userId));
+		//	apiClient.Body = testSuite;
+		//	apiClient.Post<object>("/api/TestSuites");
+		//	_lastResponse = apiClient.Response.Content;
+		//	if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
+		//}
+
+
+		/// <summary>
+		/// Get test case type
+		/// </summary>
+		/// <returns>List of test case type</returns>
+		public List<TestCaseType> GetTestCaseTypes()
+		{
+
+			var apiClient = new APIClient(_baseURL);
+			apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
+			apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _user.access_token));
+			var TCtypes = apiClient.Get<List<TestCaseType>>("api/testcasetypes");
+			if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
+
+			return TCtypes;
+		}
+
 		#endregion
 	}
 }

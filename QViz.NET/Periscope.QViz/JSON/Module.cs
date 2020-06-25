@@ -33,6 +33,11 @@ namespace Periscope.QViz.JSON
 		public DateTime updatedOn;
 
 		/// <summary>
+		/// ProjectId for the module
+		/// </summary>
+		public string ProjectId;
+
+		/// <summary>
 		/// Default Constructor
 		/// </summary>
 		public Module()
@@ -42,6 +47,7 @@ namespace Periscope.QViz.JSON
 			this.isActive = false;
 			this.createdOn = DateTime.Now;
 			this.updatedOn = DateTime.Now;
+			this.ProjectId = "";
 		}
 	}
 }

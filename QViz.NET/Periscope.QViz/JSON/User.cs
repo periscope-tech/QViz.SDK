@@ -20,7 +20,7 @@ namespace Periscope.QViz.JSON
 		/// <summary>
 		/// Unique Name of the User
 		/// </summary>
-		public string username;
+		public string userName;
 
 		/// <summary>
 		/// Alternative Name of the User
@@ -79,7 +79,7 @@ namespace Periscope.QViz.JSON
 		{
 			this.userId = "";
 			this.companyId = "";
-			this.username = "";
+			this.userName = "";
 			this.name = "";
 			this.password = "";
 			this.firstName = "";
