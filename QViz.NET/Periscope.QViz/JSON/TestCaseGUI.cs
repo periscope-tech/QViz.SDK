@@ -15,7 +15,7 @@ namespace Periscope.QViz.JSON
 		/// <summary>
 		/// Lise of Test Action Objects associated with the Test Case
 		/// </summary>
-		public IList<Action> testActions;
+		public IList<TestAction> testActions;
 		
 		/// <summary>
 		/// List of Test API Objects associated with the Test Case
@@ -28,7 +28,7 @@ namespace Periscope.QViz.JSON
 		public TestCaseGUI() : base()
 		{
 			this.testCaseSteps = new List<TestCaseStep>();
-			this.testActions = new List<Action>();
+			this.testActions = new List<TestAction>();
 			this.testAPIs = new List<TestAPI>();
 		}
 	}

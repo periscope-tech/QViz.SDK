@@ -56,12 +56,12 @@ namespace Periscope.QViz.Test
 			{
 				userId = Guid.NewGuid().ToString(),
 				companyId = CompanyId,
-				username = "Sri",
-				name = "Sri",
+				userName = "Annamalai4",
+				name = "Annamalai4",
 				password = "Sri@2019",
 				firstName = "Srinivasan",
 				lastName = "Annamalai",
-				email = "email@sri.ink"
+				email = "srinivasan.annamalai@qviz.io"
 			};
 			var apiClient = new APIClient(APIURL);
 			apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
@@ -116,15 +116,15 @@ namespace Periscope.QViz.Test
 			apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
 			apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _apiUser.access_token));
 			apiClient.Headers.Add(new KeyValue("userId", _apiUser.userId));
-			_user.username = _user.name;
 			_user.email = "srinivasan.annamalai@qviz.io";
 			apiClient.Body = _user;
-			var updatedUser = apiClient.Put<User>("/api/Users/" + _user.userId);
+			QVizResponseObject<User> qVizResponse = apiClient.Put<QVizResponseObject<User>>("/api/Users/" + _user.userId);
+			
 			if (apiClient.Response.IsSuccessful)
 			{
 				Assert.AreEqual(
 					_user.email,
-					updatedUser.email,
+					qVizResponse.Value.email,
 					"Updated User Email should match the one provided"
 				);
 			}
