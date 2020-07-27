@@ -69,7 +69,7 @@ public class APIClientTests {
 		user = new User();
 		user.userId = UUID.randomUUID().toString();
 		user.companyId = companyId;
-		user.username = "Sri";
+		user.userName = "Sri";
 		user.password = "Sri@2019";
 		user.firstName = "Srinivasan";
 		user.lastName = "Annamalai";
@@ -83,7 +83,7 @@ public class APIClientTests {
 			apiResponse = EntityUtils.toString(apiClient.response.getEntity());
 			UserResponse response = apiMapper.readValue(apiResponse, UserResponse.class);
 			user = response.value;
-			user.username = user.name;
+			user.userName = user.name;
 			assertEquals(
 				"User created successfully",
 				response.message,
@@ -131,6 +131,7 @@ public class APIClientTests {
 		apiClient.headers.add(new KeyValue("Authorization", "Bearer " + apiUser.access_token));
 		apiClient.headers.add(new KeyValue("userId", apiUser.userId));
 		user.email = "email@srinivasan.pro";
+		user.userName = user.name.isEmpty() ? "Sri" : user.name;
 		apiClient.body = apiMapper.writeValueAsString(user);
 		if (apiClient.put("/api/Users/" + user.userId) == 200) {
 			apiClient.get("/api/Users/" + user.userId); //Put not returning the user object hence calling the get
