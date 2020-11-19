@@ -20,7 +20,7 @@ public class User {
 	/**
 	 * Unique name of the User
 	 */
-	public String username;
+	public String userName;
 
 	/**
 	 * Alternative Name of the User
@@ -78,7 +78,7 @@ public class User {
 	public User() {
 		this.userId = "";
 		this.companyId = "";
-		this.username = "";
+		this.userName = "";
 		this.name = "";
 		this.password = "";
 		this.firstName = "";
