@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Azure.Storage;
 using Microsoft.Azure.Storage.Blob;
 using Newtonsoft.Json;
@@ -414,7 +416,7 @@ namespace Periscope.QViz.Clients
 			_lastResponse = apiClient.Response.Content;
 			if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
 		}
-
+	
 		/// <summary>
 		/// Get all modules in a project
 		/// </summary>
@@ -510,6 +512,7 @@ namespace Periscope.QViz.Clients
 			var apiClient = new APIClient(_baseURL);
 			apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
 			apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _user.access_token));
+			
 			var TCtypes = apiClient.Get<List<TestCaseType>>("api/testcasetypes");
 			if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
 
@@ -517,5 +520,47 @@ namespace Periscope.QViz.Clients
 		}
 
 		#endregion
+
+		#region Tools
+
+		public List<Tool> GetTools(string projecId)
+		{
+			var apiClient = new APIClient(_baseURL);
+			apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
+			apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _user.access_token));
+			apiClient.Queries.Add(new KeyValue("projectId", projecId));
+			var tools = apiClient.Get<List<Tool>>("api/tools");
+			if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
+
+			return tools;
+		}
+		#endregion
+
+		///// <summary>
+		///// Post bulk GUI Tests to the QViz Instance
+		///// </summary>
+		
+		//public void PostBulkTestcasesUpload(string destinationProjectId, IFormFile file)
+		//{
+		//	var apiClient = new APIClient(_baseURL);
+		//	apiClient.Headers.Add(new KeyValue("Content-Type", "application/json"));
+		//	apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _user.access_token));
+		//	apiClient.Headers.Add(new KeyValue("userId", _user.userId));
+		//	apiClient.Queries.Add(new KeyValue("destinationProjectId", destinationProjectId));
+
+		//	byte[] data;
+		//	using (var br = new BinaryReader(file.OpenReadStream()))
+		//	{
+		//		data = br.ReadBytes((int)file.OpenReadStream().Length);
+		//	}
+		//	ByteArrayContent bytes = new ByteArrayContent(data);
+		//	MultipartFormDataContent multiContent = new MultipartFormDataContent();
+		//	multiContent.Add(bytes, "file", file.Name);
+		//	multiContent.Add(new StringContent(destinationProjectId), "destinationProjectId");
+		//	apiClient.Body = multiContent;
+		//	apiClient.Post<object>("/api/bulkTestcasesUploadAsync");
+		//	_lastResponse = apiClient.Response.Content;
+		//	if (!apiClient.Response.IsSuccessful) throw apiClient.GetError();
+		//}
 	}
 }

@@ -12,15 +12,22 @@ namespace Periscope.QViz.Test
     [TestFixture]
     public class QVizClientTests
     {
-        private const string QVizURL = "https://api-demo.qviz.io";
-        private const string QVizProject = "UbiSoft Web (en-US)";
-        private const string QVizUser = "DemoAdmin";
-        private const string QVizPassword = "password";
+        //private const string QVizURL = "https://api-demo.qviz.io";
+        //private const string QVizProject = "UbiSoft Web (en-US)";
+        //private const string QVizUser = "DemoAdmin";
+        //private const string QVizPassword = "password";
+
+        private const string QVizURL = "https://api-qa.qviz.io";
+        private const string QVizProject = "Instant Loans";
+        private const string QVizUser = "qifadmin";
+        private const string QVizPassword = "Password";
 
         private static QVizClient _qvizClient;
         private static List<Module> modules = new List<Module>();
         private static List<SubModule> subModules = new List<SubModule>();
         private static List<TestCaseType> testcaseTypes = new List<TestCaseType>();
+        private static List<TestCaseGUI> tc_gui = new List<TestCaseGUI>();
+        private static List<TestCaseAPI> tc_api = new List<TestCaseAPI>();
 
         [OneTimeSetUp]
         public static void SetUp()
@@ -210,10 +217,7 @@ namespace Periscope.QViz.Test
                     actionType = "Enter",
                 };
 
-                List<TestAction> listTestAction = new List<TestAction>
-                {
-                    new TestAction { TestCaseId = null, SrNo = 1, Action = testAction1, TestActionId = null }
-                };
+                List<Action> listTestAction = new List<Action> { testAction1 };
 
                 //Step Actions
                 Action stepAction1 = new Action
@@ -224,13 +228,11 @@ namespace Periscope.QViz.Test
                     actionType = "Enter",
                 };
 
-                List<TestStepAction> stepActions1 = new List<TestStepAction>
-                {
-                    new TestStepAction { srNo = 1, action = stepAction1, testStepActionId = null }
-                };
+                List<Action> stepActions1 = new List<Action> { stepAction1 };
+                
 
                 List<TestCaseStep> steps = new List<TestCaseStep> {
-                 new TestCaseStep {  srNo = 1, stepDescription = "Step1", expectedResult = "Step Result1", testCaseStepId = null, testStepActions =  stepActions1 },
+                 new TestCaseStep {  srNo = 1, stepDescription = "Step1", expectedResult = "Step Result1", testCaseStepId = null, stepActions = stepActions1 },
                 };
 
                 TestSuite tsuite = new TestSuite
@@ -262,13 +264,14 @@ namespace Periscope.QViz.Test
                     testToolID = "DemoTool1",
                     testTags = testTags,
                     testCaseSteps = steps,
-                    testActions = listTestAction,
+                    testCaseActions = listTestAction,
                     testSuites = suites,
                 };
                 _qvizClient.PostGUITest(guiTC);
 
                 string response = _qvizClient.LastResponse();
                 QVizResponseObject<TestCaseGUI> qVizResponse = JsonConvert.DeserializeObject<QVizResponseObject<TestCaseGUI>>(response);
+               
                 Assert.AreEqual("Test case created successfully", qVizResponse.Message);
             }
             catch (Exception error)
@@ -409,7 +412,7 @@ namespace Periscope.QViz.Test
                     testCaseTypeId = testcaseTypes.FirstOrDefault(f => f.name.ToLower() == "api").testCaseTypeId,
                     testToolID = "DemoTool1",
                     testTags = testTags,
-                    testAPI = apis,
+                    testAPIs = apis,
                     module = null,
                     subModule = null,
                     
@@ -418,6 +421,7 @@ namespace Periscope.QViz.Test
 
                 string response = _qvizClient.LastResponse();
                 QVizResponseObject<TestCaseAPI> qVizResponse = JsonConvert.DeserializeObject<QVizResponseObject<TestCaseAPI>>(response);
+            
                 Assert.AreEqual("Test case created successfully", qVizResponse.Message);
             }
             catch (Exception error)
@@ -436,8 +440,8 @@ namespace Periscope.QViz.Test
                 var project = _qvizClient.GetProject(QVizProject);
                 if (project != null)
                 {
-                    var testCases = _qvizClient.GetGUITestCases(project.projectId);
-                    Assert.True(testCases.Count > 0, "There should at least be one GUI Test Case");
+                    tc_gui = _qvizClient.GetGUITestCases(project.projectId);
+                    Assert.True(tc_gui.Count > 0, "There should at least be one GUI Test Case");
                 }
                 else
                 {
@@ -460,8 +464,8 @@ namespace Periscope.QViz.Test
                 var project = _qvizClient.GetProject(QVizProject);
                 if (project != null)
                 {
-                    var testCases = _qvizClient.GetAPITestCases(project.projectId);
-                    Assert.True(testCases.Count > 0, "There should at least be one API Test Case");
+                    tc_api = _qvizClient.GetAPITestCases(project.projectId);
+                    Assert.True(tc_api.Count > 0, "There should at least be one API Test Case");
                 }
                 else
                 {
@@ -485,7 +489,8 @@ namespace Periscope.QViz.Test
                 var testCases = _qvizClient.GetGUITestCases(project.projectId);
                 if (testCases.Count > 0)
                 {
-                    var testCase = testCases.First();
+                    var testCase = testCases.FirstOrDefault(f => f.testCaseSteps.Count >= 4);
+
                     var guiResult = new GUITestResult
                     {
                         testResult =
@@ -493,40 +498,84 @@ namespace Periscope.QViz.Test
                             testCaseId = testCase.testCaseId,
                             moduleId = testCase.moduleId,
                             subModuleId = testCase.subModuleId,
+                            actualResult= "Error1 Message should be correct for all fields of B.I. Worksheet sheet in Export excel file",
                             status = "Pass",
+                            error="",
+                            errorScreen= "",
                             sUT = project.projectName,
-                            releaseName = "Version 1.0.0",
-                            releaseNo = "1.0.0",
-                            sprintName = "UBI Sprint 1",
-                            sprintNo = "UBI-1",
-                            buildVersion = "1.0.0",
-                            browserName = "ChromeDriver",
-                            browserVersion = "2.46",
+                            releaseName = "Release 9",
+                            releaseNo = "8.0.0",
+                            sprintName = "P&C Sprint 8",
+                            sprintNo = "PC-8",
+                            buildVersion = "33004",
+                            browserName = "chrome",
+                            browserVersion = "78.0.3904",
                             resolution = "1920x1080",
                             oSName = "Windows 10 Professional",
                             oSVersion = "1903",
-                            appType = "Angular 8 Application",
-                            appVersion = "1.0.0",
-                            executionStartTime = DateTime.Now,
-                            projectId = project.projectId,
-                            environment = "Cloud",
-                            runID = "SDK-Unit-Test"
+                            appType = "ReactJS Application",
+                            appVersion = "7.29002",
+                            executionStartTime = DateTime.Now, //Convert.ToDateTime("2020-06-30T17:35:33.512"),
+                            executionEndTime = DateTime.Now,
+                            projectId = testCase.projectId,
+                            environment = "QA",
+                            runID = "SDK-Unit-Test" + DateTime.Now,
+
                         }
                     };
-                    foreach (var testStep in testCase.testCaseSteps)
-                    {
-                        var stepResult = new TestStepResult
-                        {
-                            testCaseStepId = testStep.testCaseStepId,
-                            status = "Pass",
-                            actualResult = testStep.expectedResult,
-                            executionStartTime = DateTime.Now,
-                            executionEndTime = DateTime.Now
-                        };
-                        guiResult.testResult.testStepResults.Add(stepResult);
-                    }
 
-                    guiResult.testResult.executionEndTime = DateTime.Now;
+                    var testSteps = testCase.testCaseSteps;
+                    //foreach (var testStep in testCase.testCaseSteps)
+                    //{
+                        var stepResult1 = new TestStepResult
+                        {
+                            testCaseStepId = testSteps[0].testCaseStepId,
+                            actualResult = "Error message should be correct for Annual Net Profit/(Net Loss) Before Tax cell",
+                            screenshotURL=  "",
+                            status= "Pass",
+                            error= "",
+                            executionStartTime = Convert.ToDateTime("2020-06-30T17:35:36.577"),
+                            executionEndTime=Convert.ToDateTime("2020-06-30T17:35:40.793")
+                        };
+                        guiResult.testResult.testStepResults.Add(stepResult1);
+
+                        var stepResult2 = new TestStepResult
+                        {
+                            testCaseStepId = testSteps[1].testCaseStepId,
+                            actualResult = "Error message should be correct for Annual Continuing Expenses cell",
+                            screenshotURL = "",
+                            status = "Pass",
+                            error = "",
+                            executionStartTime = Convert.ToDateTime("2020-06-30T17:35:42.793"),
+                            executionEndTime = Convert.ToDateTime("2020-06-30T17:35:43.153")
+                        };
+                        guiResult.testResult.testStepResults.Add(stepResult2);
+
+                        var stepResult3 = new TestStepResult
+                        {
+                            testCaseStepId = testSteps[2].testCaseStepId,
+                            actualResult = "Error message should be correct for What is (in number of months) the amount of time  needed to operate at 100% in the event of a total  loss?",
+                            screenshotURL = "",
+                            status = "Pass",
+                            error = "",
+                            executionStartTime = Convert.ToDateTime("2020-06-30T17:35:45.154"),
+                            executionEndTime = Convert.ToDateTime("2020-06-30T17:35:45.481")
+                        };
+                        guiResult.testResult.testStepResults.Add(stepResult3);
+
+                        var stepResult4 = new TestStepResult
+                        {
+                            testCaseStepId = testSteps[3].testCaseStepId,
+                            actualResult = "Error message should be correct for Extra Expense cell",
+                            screenshotURL = "",
+                            status = "Pass",
+                            error = "",
+                            executionStartTime = Convert.ToDateTime("2020-06-30T17:35:47.496"),
+                            executionEndTime = Convert.ToDateTime("2020-06-30T17:35:47.800")
+                        };
+                        guiResult.testResult.testStepResults.Add(stepResult4);
+
+                   
                     _qvizClient.PostGUITestResults(guiResult);
                     Assert.AreEqual("Pass", guiResult.testResult.status);
                 }

@@ -114,9 +114,16 @@ namespace Periscope.QViz.JSON
 		public IList<TestSuiteTestCaseMapping> testsuiteTestcaseMappings;
 
 		/// <summary>
-		/// List of third-party Tools integrated with the Test Case
+		/// GET List of third-party Tools integrated with the Test Case
 		/// </summary>
 		public IList<TestCaseTool> testCaseTools;
+
+
+		/// <summary>
+		/// POST List of third-party Tools integrated with the Test Case
+		/// </summary>
+		public virtual List<Tool> testTools { get; set; }
+
 
 		/// <summary>
 		/// List of Test Result Objects associated with the Test Case
@@ -147,6 +154,7 @@ namespace Periscope.QViz.JSON
 		/// GET List of third-party Tool identifiers associated with the Test Case
 		/// </summary>
 		public IList<string> listToolIds;
+
 
 		/// <summary>
 		/// List of test suites to post
@@ -185,6 +193,7 @@ namespace Periscope.QViz.JSON
 			this.lastExecutionEndDate = "";
 			this.testsuiteTestcaseMappings = new List<TestSuiteTestCaseMapping>();
 			this.testCaseTools = new List<TestCaseTool>();
+			this.testTools = new List<Tool>();
 			this.testResults = new List<TestResult>();
 			this.testCaseTags = new List<TestCaseTag>();
 			this.executionStatus = new ExecutionStatus();
