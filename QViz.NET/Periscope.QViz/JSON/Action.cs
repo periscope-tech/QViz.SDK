@@ -37,8 +37,6 @@ namespace Periscope.QViz.JSON
 		/// </summary>
 		public DateTime updatedOn;
 
-		
-
 		/// <summary>
 		/// Default Constructor
 		/// </summary>
