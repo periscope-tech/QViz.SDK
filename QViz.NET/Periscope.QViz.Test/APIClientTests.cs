@@ -117,9 +117,11 @@ namespace Periscope.QViz.Test
 			apiClient.Headers.Add(new KeyValue("Authorization", "Bearer " + _apiUser.access_token));
 			apiClient.Headers.Add(new KeyValue("userId", _apiUser.userId));
 			_user.email = "srinivasan.annamalai@qviz.io";
+			_user.userName = string.IsNullOrEmpty(_user.name) ? "Sri" : _user.name;
+			_user.name = string.IsNullOrEmpty(_user.userName) ? "Sri" : _user.userName;
 			apiClient.Body = _user;
 			QVizResponseObject<User> qVizResponse = apiClient.Put<QVizResponseObject<User>>("/api/Users/" + _user.userId);
-			
+
 			if (apiClient.Response.IsSuccessful)
 			{
 				Assert.AreEqual(
