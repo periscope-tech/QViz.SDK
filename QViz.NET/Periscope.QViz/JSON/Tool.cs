@@ -34,6 +34,10 @@ namespace Periscope.QViz.JSON
 		/// Is this third-party Tool Integration Active?
 		/// </summary>
 		public bool isActive;
+		/// <summary>
+		/// Associated value for tool
+		/// </summary>
+		public string value { get; set; }
 
 		/// <summary>
 		/// Default Constructor
@@ -45,6 +49,7 @@ namespace Periscope.QViz.JSON
 			this.description = "";
 			this.toolType = "";
 			this.configTemplate = "";
+			this.value = "";
 		}
 	}
 }

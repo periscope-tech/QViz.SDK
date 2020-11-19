@@ -39,9 +39,14 @@ namespace Periscope.QViz.JSON
 		public DateTime updatedOn;
 
 		/// <summary>
-		/// List of Test Step Action Objects associated with the Test Case Step
+		/// GET List of Test Step Actions Objects associated with the Test Case Step
 		/// </summary>
-		public IList<TestStepAction> testStepActions;
+		public IList<TestStepAction> testStepActions { get; }
+
+		/// <summary>
+		/// POST List of Test Step Actions Objects associated with the Test Case Step
+		/// </summary>
+		public List<Action> stepActions;
 
 		/// <summary>
 		/// List of Test Step Tag Objects associated with the Test Case Step
@@ -61,6 +66,7 @@ namespace Periscope.QViz.JSON
 			this.updatedOn = DateTime.Now;
 			this.testStepActions = new List<TestStepAction>();
 			this.testStepTags = new List<TestStepTag>();
+			this.stepActions = new List<Action>();
 		}
 	}
 }
