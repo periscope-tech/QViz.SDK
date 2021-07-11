@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class QVizClientTests {
 
-	private static String qvizURL = "https://api.qviz.io";
+	private static String qvizURL = "https://api-qa.qviz.io";
 	private static String qvizProject = "PandC";
 	private static String qvizUser = "wdadmin";
 	private static String qvizPassword = "password";
