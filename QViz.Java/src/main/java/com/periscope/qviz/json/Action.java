@@ -38,6 +38,16 @@ public class Action {
 	public Date updatedOn;
 
 	/**
+	 * Is the Action sensitive
+	 */
+	public Boolean isSensitive;
+
+	/**
+	 * Is the value expected to be encrypted
+	 */
+	public Boolean isEncrypted;
+
+	/**
 	 * Default Constructor
 	 */
 	public Action() {
@@ -45,6 +55,8 @@ public class Action {
 		this.actionType = "";
 		this.fieldName = "";
 		this.fieldValue = "";
+		this.isSensitive = true;
+		this.isEncrypted = false;
 		this.createdOn = null;
 		this.updatedOn = null;
 	}

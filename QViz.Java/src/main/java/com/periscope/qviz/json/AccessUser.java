@@ -31,6 +31,16 @@ public class AccessUser {
 	public String lastname;
 
 	/**
+	 * Public key
+	 */
+	public String qvizPublicKey;
+
+	/**
+	 * IS this user part of admin group
+	 */
+	public boolean isInAdminGroup;
+
+	/**
 	 * Default Constructor
 	 */
 	public AccessUser() {
@@ -39,6 +49,8 @@ public class AccessUser {
 		this.username = "";
 		this.firstname = "";
 		this.lastname = "";
+		this.isInAdminGroup = true;
+		this.qvizPublicKey = "";
 	}
 
 }
