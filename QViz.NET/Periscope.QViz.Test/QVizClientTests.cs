@@ -12,10 +12,10 @@ namespace Periscope.QViz.Test
     [TestFixture]
     public class QVizClientTests
     {
-        private const string QVizURL = "https://api-demo.qviz.io";
-        private const string QVizProject = "Gamer Store";
-        private const string QVizUser = "DemoAdmin";
-        private const string QVizPassword = "password";
+        private const string QVizURL = "https://api-qa.qviz.io";
+        private const string QVizProject = "Instant Loans";
+        private const string QVizUser = "qifadmin";
+        private const string QVizPassword = "Password";
 
         private static QVizClient _qvizClient;
         private static List<Module> modules = new List<Module>();
