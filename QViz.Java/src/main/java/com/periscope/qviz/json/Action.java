@@ -59,6 +59,8 @@ public class Action {
 		this.isEncrypted = false;
 		this.createdOn = null;
 		this.updatedOn = null;
+		this.isSensitive = false;
+		this.isEncrypted = false;
 	}
 
 }

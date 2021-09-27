@@ -6,8 +6,8 @@
 
 	<!-- Package Description -->
 	<groupId>com.periscope</groupId>
-	<artifactId>QViz</artifactId>
-	<version>1.0.0</version>
+	<artifactId>qviz</artifactId>
+	<version>1.0.1</version>
 
 	<!-- Package Configurations -->
 	<name>QViz</name>
@@ -38,8 +38,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<junit.jupiter.version>5.6.2</junit.jupiter.version>
-		<rest.assured.version>4.3.0</rest.assured.version>
+		<junit.jupiter.version>5.8.1</junit.jupiter.version>
+		<rest.assured.version>4.4.0</rest.assured.version>
 	</properties>
 
 	<!-- Package Repositories -->
@@ -72,17 +72,19 @@
 			<plugins>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.1</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-site-plugin</artifactId>
-					<version>3.9.0</version>
+					<version>3.9.1</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>3.0.0-M4</version>
+					<version>3.0.0-M5</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-source-plugin</artifactId>
+					<version>3.2.1</version>
 					<executions>
 						<execution>
 							<id>attach-sources</id>
@@ -94,6 +96,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.3.1</version>
 					<executions>
 						<execution>
 							<id>attach-javadocs</id>
@@ -108,18 +111,23 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-clean-plugin</artifactId>
+					<version>3.1.0</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
+					<version>3.2.0</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
+					<version>3.2.0</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
+					<version>3.0.0-M1</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
+					<version>3.0.0-M1</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -130,15 +138,11 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.1.2</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>3.0.0-M4</version>
-			</plugin>
-			<plugin>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.2.0</version>
+				<version>3.0.0-M5</version>
 			</plugin>
 		</plugins>
 	</reporting>
@@ -183,7 +187,7 @@
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-launcher</artifactId>
-			<version>1.6.2</version>
+			<version>1.8.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

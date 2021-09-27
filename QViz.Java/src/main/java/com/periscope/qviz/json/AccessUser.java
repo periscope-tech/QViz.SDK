@@ -45,12 +45,12 @@ public class AccessUser {
 	 */
 	public AccessUser() {
 		this.access_token = "";
+		this.qvizPublicKey = "";
 		this.userId = "";
 		this.username = "";
 		this.firstname = "";
 		this.lastname = "";
 		this.isInAdminGroup = true;
-		this.qvizPublicKey = "";
 	}
 
 }
