@@ -292,6 +292,7 @@ public class QVizClient {
 		apiClient.headers.add(new KeyValue("Content-Type", "application/json"));
 		apiClient.headers.add(new KeyValue("Authorization", "Bearer " + this.user.access_token));
 		apiClient.queries.add(new KeyValue("projectId", projectId));
+		apiClient.headers.add(new KeyValue("userId", user.userId));
 		if (apiClient.get("/api/apiTestcases") == 200) {
 			// DEBUG: Store the API Response
 			lastResponse = EntityUtils.toString(apiClient.response.getEntity());

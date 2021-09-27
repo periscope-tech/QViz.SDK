@@ -74,7 +74,7 @@ public class User {
 	 */
 	public Date updatedOn;
 
-	public List<UserProfile> userProfiles ;
+	public List<UserProfile> userProfiles;
 
 	/**
 	 * Default Constructor

@@ -10,8 +10,6 @@ public class AccessUser {
 	 */
 	public String access_token;
 
-	public String qvizPublicKey;
-
 	/**
 	 * Identifier of the User
 	 */
@@ -32,7 +30,15 @@ public class AccessUser {
 	 */
 	public String lastname;
 
-	public Boolean isInAdminGroup;
+	/**
+	 * Public key
+	 */
+	public String qvizPublicKey;
+
+	/**
+	 * IS this user part of admin group
+	 */
+	public boolean isInAdminGroup;
 
 	/**
 	 * Default Constructor
