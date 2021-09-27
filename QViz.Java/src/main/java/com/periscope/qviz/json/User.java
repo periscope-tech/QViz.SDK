@@ -1,6 +1,8 @@
 package com.periscope.qviz.json;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * JSON Model for User Details
@@ -72,6 +74,8 @@ public class User {
 	 */
 	public Date updatedOn;
 
+	public List<UserProfile> userProfiles ;
+
 	/**
 	 * Default Constructor
 	 */
@@ -89,6 +93,7 @@ public class User {
 		this.isDeleted = false;
 		this.createdOn = null;
 		this.updatedOn = null;
+		this.userProfiles = new ArrayList<>();
 	}
 
 }

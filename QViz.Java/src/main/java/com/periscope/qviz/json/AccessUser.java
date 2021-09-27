@@ -10,6 +10,8 @@ public class AccessUser {
 	 */
 	public String access_token;
 
+	public String qvizPublicKey;
+
 	/**
 	 * Identifier of the User
 	 */
@@ -30,15 +32,19 @@ public class AccessUser {
 	 */
 	public String lastname;
 
+	public Boolean isInAdminGroup;
+
 	/**
 	 * Default Constructor
 	 */
 	public AccessUser() {
 		this.access_token = "";
+		this.qvizPublicKey = "";
 		this.userId = "";
 		this.username = "";
 		this.firstname = "";
 		this.lastname = "";
+		this.isInAdminGroup = true;
 	}
 
 }
