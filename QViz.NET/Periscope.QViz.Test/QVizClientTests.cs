@@ -13,7 +13,7 @@ namespace Periscope.QViz.Test
     public class QVizClientTests
     {
         private const string QVizURL = "https://api-demo.qviz.io";
-        private const string QVizProject = "UbiSoft Web (en-US)";
+        private const string QVizProject = "Gamer Store";
         private const string QVizUser = "DemoAdmin";
         private const string QVizPassword = "password";
 

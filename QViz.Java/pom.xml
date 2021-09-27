@@ -6,8 +6,8 @@
 
 	<!-- Package Description -->
 	<groupId>com.periscope</groupId>
-	<artifactId>QViz</artifactId>
-	<version>1.0.0</version>
+	<artifactId>qviz</artifactId>
+	<version>1.0.2</version>
 
 	<!-- Package Configurations -->
 	<name>QViz</name>
@@ -128,18 +128,18 @@
 	<!-- Package Reporting -->
 	<reporting>
 		<plugins>
-			<plugin>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>3.0.0</version>
-			</plugin>
-			<plugin>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>3.0.0-M4</version>
-			</plugin>
-			<plugin>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.2.0</version>
-			</plugin>
+<!--			<plugin>-->
+<!--				<artifactId>maven-project-info-reports-plugin</artifactId>-->
+<!--				<version>3.0.0</version>-->
+<!--			</plugin>-->
+<!--			<plugin>-->
+<!--				<artifactId>maven-surefire-report-plugin</artifactId>-->
+<!--				<version>3.0.0-M4</version>-->
+<!--			</plugin>-->
+<!--			<plugin>-->
+<!--				<artifactId>maven-javadoc-plugin</artifactId>-->
+<!--				<version>3.2.0</version>-->
+<!--			</plugin>-->
 		</plugins>
 	</reporting>
 
