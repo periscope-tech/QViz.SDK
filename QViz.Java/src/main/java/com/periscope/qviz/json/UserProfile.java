@@ -33,6 +33,11 @@ public class UserProfile {
 	public Boolean isActive;
 
 	/**
+	 * Is this User has access to Sensitive data?
+	 */
+	public Boolean allowSensetiveData;
+
+	/**
 	 * Date and Time on which this Model was Created
 	 */
 	public Date createdOn;
@@ -66,6 +71,7 @@ public class UserProfile {
 		this.projectId = "";
 		this.roleId = "";
 		this.isActive = false;
+		this.allowSensetiveData = false;
 		this.createdOn = null;
 		this.updatedOn = null;
 		this.user = new User();
