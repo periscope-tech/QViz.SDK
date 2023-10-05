@@ -23,7 +23,7 @@
   "author": "Srinivasan Annamalai <srinivasan.annamalai@qviz.io>",
   "license": "GPL-3.0-or-later",
   "devDependencies": {
-    "autoprefixer": "^9.7.6",
-    "postcss-cli": "^7.1.1"
+    "autoprefixer": "^10.4.16",
+    "postcss-cli": "^10.1.0"
   }
 }
